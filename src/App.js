@@ -20,8 +20,6 @@ class App extends Component {
       <div>
         <jsMouse />
         <div className = "jsMouse">
-          <p> Hello World! </p>
-          <div id="frame" />
           <canvas id="canvas1" ref="mCanvas" width="500" height="500"></canvas>
         </div>
       </div>
