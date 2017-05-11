@@ -11,11 +11,11 @@ class App extends Component {
     var ctx = can.getContext('2d');
     
     function placeMouse(ctx) {
-      ctx.drawImage(mouse.img, mouse.x, mouse.y)
+      ctx.drawImage(mouse.img, mouse.x, mouse.y, 50, 50)
     }
     var mouse = {};
-    mouse.x = 100;
-    mouse.y = 100;
+    mouse.x = 50;
+    mouse.y = 50;
 
     ((callback) => {
       var mouseI = new Image();
