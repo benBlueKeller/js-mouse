@@ -6,6 +6,15 @@ import jsMouse from './js-mouse.js';
 
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {}
+    this.state.mouse = {
+      x: 50,
+      y: 50
+    }
+  }
+
   componentDidMount() {
     var can = this.refs.mCanvas
     var ctx = can.getContext('2d');
@@ -13,9 +22,9 @@ class App extends Component {
     function placeMouse(ctx) {
       ctx.drawImage(mouse.img, mouse.x, mouse.y, 50, 50)
     }
-    var mouse = {};
-    mouse.x = 50;
-    mouse.y = 50;
+    var mouse = this.state.mouse;
+    /*mouse.x = 50;
+    mouse.y = 50;*/
 
     ((callback) => {
       var mouseI = new Image();
