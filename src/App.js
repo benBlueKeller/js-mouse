@@ -18,13 +18,11 @@ class App extends Component {
   componentDidMount() {
     var can = this.refs.mCanvas
     var ctx = can.getContext('2d');
+    var mouse = this.state.mouse;
     
     function placeMouse(ctx) {
       ctx.drawImage(mouse.img, mouse.x, mouse.y, 50, 50)
     }
-    var mouse = this.state.mouse;
-    /*mouse.x = 50;
-    mouse.y = 50;*/
 
     ((callback) => {
       var mouseI = new Image();
