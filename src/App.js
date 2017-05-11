@@ -6,11 +6,24 @@ import jsMouse from './js-mouse.js';
 
 
 class App extends Component {
+  componentDidMount() {
+    var can = this.refs.mCanvas
+    var ctx = can.getContext('2d');
+
+
+    ctx.fillRect(50,50,50,50);
+    console.log("HJ");
+  }
 
   render() {
     return (
       <div>
         <jsMouse />
+        <div className = "jsMouse">
+          <p> Hello World! </p>
+          <div id="frame" />
+          <canvas id="canvas1" ref="mCanvas" width="500" height="500"></canvas>
+        </div>
       </div>
     );
   }
