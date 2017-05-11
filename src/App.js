@@ -30,7 +30,22 @@ class App extends Component {
       console.log(code);
       //up arrow
       if(code === 38) {
+        mouse.y -= 10;
+        placeMouse(ctx);
+      }
+      //right arriw
+      if(code === 39) {
         mouse.x += 10;
+        placeMouse(ctx);
+      }
+      //down arrow
+      if(code === 40) {
+        mouse.y += 10;
+        placeMouse(ctx);
+      }
+      //left arrow
+      if(code === 37) {
+        mouse.x -= 10;
         placeMouse(ctx);
       }
     })
