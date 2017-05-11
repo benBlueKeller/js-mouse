@@ -9,10 +9,34 @@ class App extends Component {
   componentDidMount() {
     var can = this.refs.mCanvas
     var ctx = can.getContext('2d');
+    
+    function placeMouse(ctx) {
+      ctx.drawImage(mouse.img, mouse.x, mouse.y)
+    }
+    var mouse = {};
+    mouse.x = 100;
+    mouse.y = 100;
+
+    ((callback) => {
+      var mouseI = new Image();
+      mouseI.onload = function() {
+        mouse.img = mouseI;
+        callback(ctx);
+      }
+      mouseI.src = 'http://www.clker.com/cliparts/A/E/s/N/M/Y/lab-mouse-template-th.png'
+    })(placeMouse);
+    window.addEventListener('keydown', (e) => {
+      var code = e.keyCode;
+      console.log(code);
+      //up arrow
+      if(code === 38) {
+        mouse.x += 10;
+        placeMouse(ctx);
+      }
+    })
 
 
     ctx.fillRect(50,50,50,50);
-    console.log("HJ");
   }
 
   render() {
