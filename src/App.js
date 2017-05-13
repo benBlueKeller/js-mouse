@@ -38,8 +38,8 @@ class App extends Component {
     })(() => {this.draw()});
 
     window.addEventListener('keydown', (e) => {
+      //console.log(code);
       var code = e.keyCode;
-      console.log(code);
       //up arrow
       if(code === 38) {
         mouse.y -= 10;
@@ -62,6 +62,13 @@ class App extends Component {
       }
     })
 
+  }
+
+  checkForWin() {
+    var st = this.state
+    if(st.mouse.x === st.winBox.x && st.mouse.y === st.winBox.y) {
+      console.log("WIN!!!")
+    }
   }
 
   draw() {
