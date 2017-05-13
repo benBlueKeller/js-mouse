@@ -13,6 +13,10 @@ class App extends Component {
       x: 50,
       y: 50
     }
+    this.state.winBox = {
+      x: 50,
+      y: 50
+    }
   }
 
   componentDidMount() {
@@ -24,7 +28,11 @@ class App extends Component {
       ctx.drawImage(mouse.img, mouse.x, mouse.y, 50, 50)
     }
 
-    ((callback, ctx) => {
+    /**
+     * mouse img is loaded after canvas enviroment setup
+     * @param  {Function} callback is to draw() onload 
+     */
+    ((callback) => {
       var mouseI = new Image();
       mouseI.onload = function() {
         mouse.img = mouseI;
@@ -62,7 +70,7 @@ class App extends Component {
 
   draw() {
     this.state.ctx.clearRect(0, 0, this.refs.mCanvas.width, this.refs.mCanvas.height)
-    this.state.ctx.fillRect(50,50,50,50);
+    this.state.ctx.fillRect(this.state.winBox.x, this.state.winBox.y,50,50);
     this.state.ctx.drawImage(this.state.mouse.img, this.state.mouse.x, this.state.mouse.y, 50, 50)
   }
 
