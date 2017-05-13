@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Game from './game-model.js';
 import jsMouse from './js-mouse.js';
 
 
@@ -9,6 +10,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {}
+
+    //SETUP Game
+
     this.state.mouse = {
       x: 50,
       y: 50
