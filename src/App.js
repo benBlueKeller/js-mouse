@@ -67,11 +67,12 @@ class App extends Component {
   checkForWin() {
     var st = this.state
     if(st.mouse.x === st.winBox.x && st.mouse.y === st.winBox.y) {
-      console.log("WIN!!!")
+      console.log("WIN!!!");
     }
   }
 
   draw() {
+    this.checkForWin();
     this.state.ctx.clearRect(0, 0, this.refs.mCanvas.width, this.refs.mCanvas.height)
     this.state.ctx.fillRect(this.state.winBox.x, this.state.winBox.y,50,50);
     this.state.ctx.drawImage(this.state.mouse.img, this.state.mouse.x, this.state.mouse.y, 50, 50)
