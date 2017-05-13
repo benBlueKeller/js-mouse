@@ -28,10 +28,10 @@ class App extends Component {
       var mouseI = new Image();
       mouseI.onload = function() {
         mouse.img = mouseI;
-        callback(ctx);
+        callback();
       }
       mouseI.src = 'http://www.clker.com/cliparts/A/E/s/N/M/Y/lab-mouse-template-th.png'
-    })(placeMouse, this.state.ctx);
+    })(() => {this.draw()});
 
     window.addEventListener('keydown', (e) => {
       var code = e.keyCode;
@@ -39,31 +39,30 @@ class App extends Component {
       //up arrow
       if(code === 38) {
         mouse.y -= 10;
-        placeMouse(this.state.ctx);
+        this.draw();
       }
       //right arriw
       if(code === 39) {
         mouse.x += 10;
-        placeMouse(this.state.ctx);
+        this.draw();
       }
       //down arrow
       if(code === 40) {
         mouse.y += 10;
-        placeMouse(this.state.ctx);
+        this.draw();
       }
       //left arrow
       if(code === 37) {
         mouse.x -= 10;
-        placeMouse(this.state.ctx);
+        this.draw();
       }
     })
 
-
-    this.state.ctx.fillRect(50,50,50,50);
   }
 
   draw() {
     this.state.ctx.clearRect(0, 0, this.refs.mCanvas.width, this.refs.mCanvas.height)
+    this.state.ctx.fillRect(50,50,50,50);
     this.state.ctx.drawImage(this.state.mouse.img, this.state.mouse.x, this.state.mouse.y, 50, 50)
   }
 
