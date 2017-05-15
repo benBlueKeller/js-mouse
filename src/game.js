@@ -29,7 +29,7 @@ export default class Game {
       mouseI.src = 'http://www.clker.com/cliparts/A/E/s/N/M/Y/lab-mouse-template-th.png'
     })(() => {this.draw()}, this.mouse);
 
-    controlsScope.addEventListener('keydown', (e) => {
+    function l(e) {
       //console.log(code);
       var code = e.keyCode;
       //up arrow
@@ -52,12 +52,15 @@ export default class Game {
         this.mouse.x -= 10;
         this.draw();
       }
-    })
+    }
+    this.eventListener = l.bind(this);
+    controlsScope.addEventListener('keydown', this.eventListener);
 	}
 
 	checkForWin() {
 		if(this.mouse.x === this.winBox.x && this.mouse.y === this.winBox.y) {
 			setTimeout(this.winFunc, 1);//give ctx time to place image
+    	window.removeEventListener('keydown', this.eventListener);
 		}
 	}
 
