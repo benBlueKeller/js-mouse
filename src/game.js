@@ -6,14 +6,13 @@
  */
 
 export default class Game {
-	constructor(canvas, level = { winX: 200, winY: 200}, controlsScope = window) {
+	constructor(canvas, level, controlsScope = window) {
 		this.can = canvas;
 		this.ctx = canvas.getContext('2d');
-		console.log(this);
-		this.ctx.fillRect(90,90,50,50);
+
     this.mouse = {}
-    this.mouse.x = 50;
-    this.mouse.y = 50;
+    this.mouse.x = level.startY;
+    this.mouse.y = level.startX;
 
     this.winBox = {};
     this.winBox.x = level.winX;

@@ -16,9 +16,12 @@ class App extends Component {
 
   componentDidMount() {
     var level = {
+        startX: 100,
+        startY: 100, 
         winX: 250,
         winY: 250
     }
+    //reference to game only used for debugging
     this.state.game = new Game(this.refs.mCanvas, level);
   }
 
