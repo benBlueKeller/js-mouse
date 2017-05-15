@@ -15,9 +15,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.state.can = this.refs.mCanvas
-    this.state.ctx = this.state.can.getContext('2d');
-    new Game(this.refs.mCanvas);
+    var level = {
+        winX: 250,
+        winY: 250
+    }
+    this.state.game = new Game(this.refs.mCanvas, level);
   }
 
   
