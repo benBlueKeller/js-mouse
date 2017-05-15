@@ -6,7 +6,7 @@
  */
 
 export default class Game {
-	constructor(canvas, controlsScope = window) {
+	constructor(canvas, level = { endX: 50, endY: 50}, controlsScope = window) {
 		this.can = canvas;
 		this.ctx = canvas.getContext('2d');
 		console.log(this);
@@ -16,8 +16,8 @@ export default class Game {
     this.mouse.y = 50;
 
     this.winBox = {};
-    this.winBox.x = 50;
-    this.winBox.y = 50;
+    this.winBox.x = level.endX;
+    this.winBox.y = level.endY;
 		
 		((callback, mouse) => {
       var mouseI = new Image();
