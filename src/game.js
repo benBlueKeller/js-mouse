@@ -6,7 +6,7 @@
  */
 
 export default class Game {
-	constructor(canvas, level, controlsScope = window) {
+	constructor(canvas, level, winFunc = () => {alert("Mouse in The Hole!")}, controlsScope = window) {
 		this.can = canvas;
 		this.ctx = canvas.getContext('2d');
 
@@ -17,6 +17,8 @@ export default class Game {
     this.winBox = {};
     this.winBox.x = level.winX;
     this.winBox.y = level.winY;
+
+    this.winFunc = winFunc;
 		
 		((callback, mouse) => {
       var mouseI = new Image();
@@ -55,14 +57,14 @@ export default class Game {
 
 	checkForWin() {
 		if(this.mouse.x === this.winBox.x && this.mouse.y === this.winBox.y) {
-			console.log("WIN!!!");
+			setTimeout(this.winFunc, 1);//give ctx time to place image
 		}
 	}
 
 	draw() {
-		this.checkForWin();
 		this.ctx.clearRect(0, 0, this.can.width, this.can.height)
 		this.ctx.fillRect(this.winBox.x, this.winBox.y,50,50);
 		this.ctx.drawImage(this.mouse.img, this.mouse.x, this.mouse.y, 50, 50)
+		this.checkForWin();
 	}
 }
