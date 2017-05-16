@@ -18,6 +18,8 @@ export default class Game {
     this.winBox.x = level.winX;
     this.winBox.y = level.winY;
 
+    this.obstacles = level.obstacles;
+
     this.winFunc = winFunc;
 		
 		((callback, mouse) => {
@@ -65,9 +67,26 @@ export default class Game {
 	}
 
 	draw() {
+		/*function drawObstacles(obstacles = this.obstacles) {
+			if(typeof obstacles.rects === "object") {
+				for(var rect in obstacles.rects) {
+					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+				}
+			}
+		}*/
+		const drawObstacles = ((obstacles = this.obstacles) => {
+			if(typeof obstacles.rects === "object") {
+				for(var rect in obstacles.rects) {
+					console.log(obstacles.rects);
+					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+				}
+			}
+		}).bind(this)
+
+		this.checkForWin();
 		this.ctx.clearRect(0, 0, this.can.width, this.can.height)
 		this.ctx.fillRect(this.winBox.x, this.winBox.y,50,50);
-		this.ctx.drawImage(this.mouse.img, this.mouse.x, this.mouse.y, 50, 50)
-		this.checkForWin();
+		this.ctx.drawImage(this.mouse.img, this.mouse.x, this.mouse.y, 50, 50);
+		if(this.obstacles) drawObstacles();
 	}
 }

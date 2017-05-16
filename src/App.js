@@ -17,14 +17,30 @@ class App extends Component {
         1: {
             startX: 100,
             startY: 100, 
-            winX: 250,
-            winY: 250
+            winX: 110,
+            winY: 110
         },
         2: {
             startX: 250,
             startY: 250, 
             winX: 100,
-            winY: 100
+            winY: 100,
+            obstacles: {
+                rects: [
+                    {
+                        x: 123,
+                        y: 181,
+                        w: 100,
+                        h: 12
+                    },
+                    {
+                        x: 300,
+                        y: 300,
+                        w: 6,
+                        h: 125
+                    }
+                ]
+            }
         }
     }
     var currentLevel = 1;
@@ -32,7 +48,11 @@ class App extends Component {
     function nextLevel() {
         this.state.game = new Game(this.refs.mCanvas, levels[currentLevel], () => {
             currentLevel += 1;
-            levels[currentLevel] ? next() : alert("Mouse in The Hole!");
+            if(!levels[currentLevel]) {
+                currentLevel = 1;
+                alert("Mouse in The Hole!");
+            }
+            next();
         })
     }
     var next = nextLevel.bind(this);
