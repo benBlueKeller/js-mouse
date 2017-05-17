@@ -76,13 +76,11 @@ export default class Game {
 		}*/
 		const drawObstacles = ((obstacles = this.obstacles) => {
 			if(typeof obstacles.rects === "object") {
-					console.log("FIXME");
-					console.log("ctx", this.ctx);
-				for(var rect in obstacles.rects) {
-					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+				for(var rect of obstacles.rects) {
+					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);				
 				}
 			}
-		}).bind(this)
+		}).bind(this);
 
 		this.checkForWin();
 		this.ctx.clearRect(0, 0, this.can.width, this.can.height)
