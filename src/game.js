@@ -13,6 +13,8 @@ export default class Game {
     this.mouse = {}
     this.mouse.x = level.startY;
     this.mouse.y = level.startX;
+    this.mouse.w = 50;
+    this.mouse.h = 50;
 
     this.winBox = {};
     this.winBox.x = level.winX;
@@ -66,6 +68,17 @@ export default class Game {
 		}
 	}
 
+	/*checkForOnObstacle() {
+		if(this.obstacles.rect) {
+			for(var rect of this.obstacles.rect) {
+				function checkForRectOverlap(r1, r2) {
+
+				}
+				if()
+			}
+		}
+	}*/
+
 	draw() {
 		/*function drawObstacles(obstacles = this.obstacles) {
 			if(typeof obstacles.rects === "object") {
@@ -85,7 +98,7 @@ export default class Game {
 		this.checkForWin();
 		this.ctx.clearRect(0, 0, this.can.width, this.can.height)
 		this.ctx.fillRect(this.winBox.x, this.winBox.y,50,50);
-		this.ctx.drawImage(this.mouse.img, this.mouse.x, this.mouse.y, 50, 50);
+		this.ctx.drawImage(this.mouse.img, this.mouse.x, this.mouse.y, this.mouse.w, this.mouse.h);
 		if(this.obstacles) drawObstacles();
 	}
 }
