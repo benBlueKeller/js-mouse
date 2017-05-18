@@ -10,7 +10,11 @@ export default class Game {
 		this.can = canvas;
 		this.ctx = canvas.getContext('2d');
 
-    this.mouse = {}
+		this.start = {}
+		this.start.x = level.startX;
+		this.start.y = level.startY
+
+    this.mouse = {};
     this.mouse.x = level.startY;
     this.mouse.y = level.startX;
     this.mouse.w = 50;
@@ -81,7 +85,8 @@ export default class Game {
 			}
 			for(var rect of this.obstacles.rects) {
 				if(rectOverlap(this.mouse, rect)) {
-					console.log("OVERLAP", this.ctx);
+					this.mouse.x = this.start.x;
+					this.mouse.y = this.start.y;
 				}
 			}
 		}
