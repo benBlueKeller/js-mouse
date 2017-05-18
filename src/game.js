@@ -68,16 +68,24 @@ export default class Game {
 		}
 	}
 
-	/*checkForOnObstacle() {
-		if(this.obstacles.rect) {
-			for(var rect of this.obstacles.rect) {
-				function checkForRectOverlap(r1, r2) {
-
+	checkForOnObstacle() {
+		if(this.obstacles && this.obstacles.rects) {
+			function xOverLap() {
+		
+			}
+			function rectOverlap(r1, r2) {
+				return !( r1.x           > (r2.x + r2.w) || 
+             (r1.x + r1.w) <  r2.x           || 
+              r1.y           > (r2.y + r2.h) ||
+             (r1.y + r1.h) <  r2.y);
+			}
+			for(var rect of this.obstacles.rects) {
+				if(rectOverlap(this.mouse, rect)) {
+					console.log("OVERLAP", this.ctx);
 				}
-				if()
 			}
 		}
-	}*/
+	}
 
 	draw() {
 		/*function drawObstacles(obstacles = this.obstacles) {
@@ -95,7 +103,9 @@ export default class Game {
 			}
 		}).bind(this);
 
+		this.checkForOnObstacle();
 		this.checkForWin();
+
 		this.ctx.clearRect(0, 0, this.can.width, this.can.height)
 		this.ctx.fillRect(this.winBox.x, this.winBox.y,50,50);
 		this.ctx.drawImage(this.mouse.img, this.mouse.x, this.mouse.y, this.mouse.w, this.mouse.h);
