@@ -34,8 +34,8 @@ class App extends Component {
                         h: 72
                     },
                     {
-                        x: 300,
-                        y: 300,
+                        x: 311,
+                        y: 250,
                         w: 6,
                         h: 125
                     }
