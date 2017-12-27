@@ -63,11 +63,11 @@ class App extends Component {
     });*/
   }
 
-  
+
   render() {
     return (
       <div>
-        <jsMouse />
+        {/* <jsMouse /> */}
         <div className = "jsMouse">
           <canvas id="canvas1" ref="mCanvas" width="500" height="500"></canvas>
         </div>
