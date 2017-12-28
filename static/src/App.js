@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Game from './game.js';
-import jsMouse from './js-mouse.js';
+import jsMouse from './Js-mouse.js';
 
 
 class App extends Component {
@@ -16,13 +16,13 @@ class App extends Component {
     var levels = {
         1: {
             startX: 100,
-            startY: 100, 
+            startY: 100,
             winX: 110,
             winY: 110
         },
         2: {
             startX: 250,
-            startY: 250, 
+            startY: 250,
             winX: 100,
             winY: 100,
             obstacles: {
