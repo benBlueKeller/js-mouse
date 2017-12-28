@@ -3,23 +3,64 @@ import './js-mouse.css';
 
 class jsMouse extends Component {
 	constructor() {
-		super();
-/*
-		var can = window.document.getElementById('canvas1');
-		var ctx = can.getContext('2d');
+    super();
+    this.state = {}
+  }
 
-
-		ctx.fillRect(50,50,50,50);
-		console.log("HJ");*/
+	componentDidMount() {
+		var levels = {
+				1: {
+						startX: 100,
+						startY: 100,
+						winX: 110,
+						winY: 110
+				},
+				2: {
+						startX: 250,
+						startY: 250,
+						winX: 100,
+						winY: 100,
+						obstacles: {
+								rects: [
+										{
+												x: 123,
+												y: 181,
+												w: 100,
+												h: 72
+										},
+										{
+												x: 311,
+												y: 250,
+												w: 6,
+												h: 125
+										}
+								]
+						}
+				}
+		}
+		var currentLevel = 1;
+		//reference to game only used for debugging
+		function nextLevel() {
+				this.state.game = new Game(this.refs.mCanvas, levels[currentLevel], () => {
+						currentLevel += 1;
+						if(!levels[currentLevel]) {
+								currentLevel = 1;
+								alert("Mouse in The Hole!");
+						}
+						next();
+				})
+		}
+		var next = nextLevel.bind(this);
+		next();
+	 /* this.state.game = new Game(this.refs.mCanvas, levels[1], () => {
+				currentLevel += 1;
+				this.state.game = new Game(this.refs.mCanvas, levels[currentLevel]);
+		});*/
 	}
 
 	render() {
 		return (
-			<div className = "jsMouse">
-				<p> Hello World! </p>
-				<div className="frame" />
-				{/*canvas id="canvas1" width="500" height="500"></canvas>*/}
-			</div>
+			<canvas ref="mCanvas" id="canvas1" width="500" height="500"></canvas>
 		);
 	}
 }
