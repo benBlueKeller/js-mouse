@@ -3,11 +3,11 @@ import { Modal } from "react-bootstrap";
 
 import jsMouse from './Js-mouse.js';
 
-class MouseModal extends Component {
+export default class MouseModal extends Component {
   constructor {
     super();
     this.state = {
-      show: false
+      show: true
     }
 
     close() {
@@ -21,6 +21,7 @@ class MouseModal extends Component {
     render() {
       return (
         <div>
+          <p>Click below to play!</p>
           <Button
             bsStyle="primary"
             bsSize="large"

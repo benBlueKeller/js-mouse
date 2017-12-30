@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './js-mouse.css';
 
+import Game from './game.js';
+
 class jsMouse extends Component {
 	constructor() {
     super();
