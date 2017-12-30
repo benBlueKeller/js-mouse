@@ -7,5 +7,7 @@ app = Flask(__name__, static_folder="../static/dist", template_folder="../static
 def index():
     return render_template("index.html")
 
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #dev-only
+
 if __name__ == "__main__":
     app.run()
