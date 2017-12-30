@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 
-import MouseModal from './Js-mouse.js';
+import MouseModal from './Mouse-modal.js';
 
 class App extends Component {
   constructor() {
@@ -14,6 +14,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <p>Hello</p>
         <MouseModal />
       </div>
     );

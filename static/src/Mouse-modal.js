@@ -1,44 +1,50 @@
 import React, { Component } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 
 import jsMouse from './Js-mouse.js';
 
-export default class MouseModal extends Component {
-  constructor {
+class MouseModal extends Component {
+  constructor() {
     super();
     this.state = {
-      show: true
+      show: false
     }
+    this.open = this.open.bind(this)
+    this.close = this.close.bind(this)
+  }
+  close() {
+    this.setState({show:false})
+  }
 
-    close() {
-      this.setState({show:false})
-    }
+  open() {
+    this.setState({show:true})
+  }
 
-    open() {
-      this.setState({show:true})
-    }
-
-    render() {
-      return (
-        <div>
-          <p>Click below to play!</p>
-          <Button
-            bsStyle="primary"
-            bsSize="large"
-            onClick={this.open}
-          >
-            Play jsMouse
-          </Button>
-          <Modal show={this.state.show} onHide={this.close}>
-            <Modal.Body closeButton>
+  render() {
+    return (
+      <div>
+        <p>Click below to play!</p>
+        <Button
+          bsStyle="primary"
+          bsSize="large"
+          onClick={this.open}
+        >
+          Play jsMouse
+        </Button>
+        <Modal show={this.state.show} onHide={this.close}>
+          <Modal.Body>
+            <div>
               <jsMouse/>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={this.close}>Close</Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
-      );
-    }
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
   }
 }
+
+
+export default MouseModal
