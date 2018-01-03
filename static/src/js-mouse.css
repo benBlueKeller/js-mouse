@@ -6,10 +6,12 @@ div {
 
 canvas {
 	background-color: red;
+	width: 100%;
+	height: auto;
 }
 
 .jsMouse {
 	background-color: #396;
-	height: 20%;
-	width: 20%;
+	height: 100%;
+	width: 100%;
 }

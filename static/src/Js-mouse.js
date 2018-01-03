@@ -3,9 +3,9 @@ import './js-mouse.css';
 
 import Game from './game.js';
 
-class jsMouse extends Component {
-	constructor() {
-    super();
+class JsMouse extends Component {
+	constructor(props) {
+    super(props);
     this.state = {}
   }
 
@@ -51,20 +51,17 @@ class jsMouse extends Component {
 						}
 						next();
 				})
+				this.setState(this.state);
 		}
 		var next = nextLevel.bind(this);
 		next();
-	 /* this.state.game = new Game(this.refs.mCanvas, levels[1], () => {
-				currentLevel += 1;
-				this.state.game = new Game(this.refs.mCanvas, levels[currentLevel]);
-		});*/
 	}
 
 	render() {
-		return (
+		return <div className="jsMouse">
 			<canvas ref="mCanvas" id="canvas1" width="500" height="500"></canvas>
-		);
+		</div>;
 	}
 }
 
-export default jsMouse;
+export default JsMouse;

@@ -4,10 +4,11 @@ import './App.css';
 
 
 import MouseModal from './Mouse-modal.js';
+import JsMouse from './Js-mouse.js';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
 

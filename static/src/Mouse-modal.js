@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-import jsMouse from './Js-mouse.js';
+import JsMouse from './Js-mouse.js';
+
 
 class MouseModal extends Component {
   constructor() {
@@ -34,7 +35,7 @@ class MouseModal extends Component {
         <Modal show={this.state.show} onHide={this.close}>
           <Modal.Body>
             <div>
-              <jsMouse/>
+              <JsMouse/>
             </div>
           </Modal.Body>
           <Modal.Footer>
