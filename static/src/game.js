@@ -1,5 +1,5 @@
 /**Game class for jsMouse
- * 
+ *
  * @param  {[type]} canvas [description]
  * @param  {[type]} level  [description]
  * @return {[type]}        [description]
@@ -27,7 +27,7 @@ export default class Game {
     this.obstacles = level.obstacles;
 
     this.winFunc = winFunc;
-		
+
 		((callback, mouse) => {
       var mouseI = new Image();
       mouseI.onload = function() {
@@ -75,11 +75,11 @@ export default class Game {
 	checkForOnObstacle() {
 		if(this.obstacles && this.obstacles.rects) {
 			function xOverLap() {
-		
+
 			}
 			function rectOverlap(r1, r2) {
-				return !( r1.x           > (r2.x + r2.w) || 
-             (r1.x + r1.w) <  r2.x           || 
+				return !( r1.x           > (r2.x + r2.w) ||
+             (r1.x + r1.w) <  r2.x           ||
               r1.y           > (r2.y + r2.h) ||
              (r1.y + r1.h) <  r2.y);
 			}
@@ -93,17 +93,10 @@ export default class Game {
 	}
 
 	draw() {
-		/*function drawObstacles(obstacles = this.obstacles) {
-			if(typeof obstacles.rects === "object") {
-				for(var rect in obstacles.rects) {
-					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
-				}
-			}
-		}*/
 		const drawObstacles = ((obstacles = this.obstacles) => {
 			if(typeof obstacles.rects === "object") {
 				for(var rect of obstacles.rects) {
-					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);				
+					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 				}
 			}
 		}).bind(this);
