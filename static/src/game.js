@@ -37,32 +37,43 @@ export default class Game {
       mouseI.src = 'http://www.clker.com/cliparts/A/E/s/N/M/Y/lab-mouse-template-th.png'
     })(() => {this.draw()}, this.mouse);
 
-    function l(e) {
+    function controls(e) {
       //console.log(code);
-      var code = e.keyCode;
+      var key = e.keyCode;
       //up arrow
-      if(code === 38) {
+      if(key === 38) {
         this.mouse.y -= 10;
         this.draw();
       }
       //right arriw
-      if(code === 39) {
+      if(key === 39) {
         this.mouse.x += 10;
         this.draw();
       }
       //down arrow
-      if(code === 40) {
+      if(key === 40) {
         this.mouse.y += 10;
         this.draw();
       }
       //left arrow
-      if(code === 37) {
+      if(key === 37) {
         this.mouse.x -= 10;
         this.draw();
       }
     }
-    this.eventListener = l.bind(this);
+    this.eventListener = controls.bind(this);
     controlsScope.addEventListener('keydown', this.eventListener);
+		this.runCycle = this.runCycle.bind(this);
+		this.running = true;
+		this.runCycle()
+	}
+
+	runCycle() {
+		var fps = 2;
+		for(var obstacle of this.obstacles) {
+			if(obstacle.onTick) obstacle.onTick();
+			this.draw();
+		}
 	}
 
 	checkForWin() {
@@ -98,6 +109,8 @@ export default class Game {
 				for(var rect of obstacles.rects) {
 					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 				}
+			} else {
+				obstacle.draw()
 			}
 		}).bind(this);
 
