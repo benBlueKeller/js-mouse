@@ -36,6 +36,20 @@ class JsMouse extends Component {
 												w: 6,
 												h: 125
 										}
+								],
+								FSMs: [
+									{
+										x: 350,
+										y: 100,
+										w: 5,
+										h: 5
+									},
+									{
+										x: 75,
+										y: 100,
+										w: 5,
+										h: 5
+									},
 								]
 						}
 				}
