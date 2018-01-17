@@ -95,17 +95,14 @@ export default class Game {
 	}
 
 	checkForOnObstacle() {
-		if(this.obstacles && this.obstacles.rects) {
-			function xOverLap() {
-
-			}
+		if(this.obstacles) {
 			function rectOverlap(r1, r2) {
 				return !( r1.x           > (r2.x + r2.w) ||
              (r1.x + r1.w) <  r2.x           ||
               r1.y           > (r2.y + r2.h) ||
              (r1.y + r1.h) <  r2.y);
 			}
-			for(var rect of this.obstacles.rects) {
+			for(var rect of this.obstacles) {
 				if(rectOverlap(this.mouse, rect)) {
 					this.mouse.x = this.start.x;
 					this.mouse.y = this.start.y;
