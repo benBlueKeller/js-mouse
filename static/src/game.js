@@ -25,7 +25,8 @@ export default class Game {
     this.winBox.x = level.winX;
     this.winBox.y = level.winY;
 
-    this.obstacles = level.obs;
+    this.loadObstacles = this.loadObstacles.bind(this);
+		this.loadObstacles(level.obs || {});
 
     this.winFunc = winFunc;
 
@@ -64,6 +65,7 @@ export default class Game {
     }
     this.eventListener = controls.bind(this);
     controlsScope.addEventListener('keydown', this.eventListener);
+
 		this.runCycle = this.runCycle.bind(this);
 		this.running = true;
 		this.runCycle()
@@ -71,8 +73,9 @@ export default class Game {
 
 	loadObstacles(obs) {
 		this.obstacles = [];
+		if(obs.rects) for(var obs in obs.rects) this.obstacles.push(new Obstacle(obs));
 		if(obs.FSMs) {
-			for(obs in obs.FSMs) this.obstacles.push(new FSM(obs));
+			for(var obs in obs.FSMs) this.obstacles.push(new FSM(obs));
 		}
 	}
 
