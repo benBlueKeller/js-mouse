@@ -69,6 +69,13 @@ export default class Game {
 		this.runCycle()
 	}
 
+	loadObstacles(obs) {
+		this.obstacles = [];
+		if(obs.FSMs) {
+			for(obs in obs.FSMs) this.obstacles.push(new FSM(obs));
+		}
+	}
+
 	runCycle() {
 		var fps = 2;
 		for(var obstacle of this.obstacles) {
