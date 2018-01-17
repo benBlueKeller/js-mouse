@@ -22,7 +22,7 @@ class JsMouse extends Component {
 						startY: 250,
 						winX: 100,
 						winY: 100,
-						obstacles: {
+						obs: {
 								rects: [
 										{
 												x: 123,

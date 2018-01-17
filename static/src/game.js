@@ -1,10 +1,11 @@
+import { Obstacle, FSM } from "./obstacles.js";
+
 /**Game class for jsMouse
  *
  * @param  {[type]} canvas [description]
  * @param  {[type]} level  [description]
  * @return {[type]}        [description]
  */
-
 export default class Game {
 	constructor(canvas, level, winFunc = () => {alert("Mouse in The Hole!")}, controlsScope = window) {
 		this.can = canvas;
@@ -24,7 +25,7 @@ export default class Game {
     this.winBox.x = level.winX;
     this.winBox.y = level.winY;
 
-    this.obstacles = level.obstacles;
+    this.obstacles = level.obs;
 
     this.winFunc = winFunc;
 
