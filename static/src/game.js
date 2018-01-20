@@ -113,13 +113,7 @@ export default class Game {
 
 	draw() {
 		const drawObstacles = ((obstacles = this.obstacles) => {
-			if(typeof obstacles.rects === "object") {
-				for(var rect of obstacles.rects) {
-					this.ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
-				}
-			} else {
-				obstacle.draw()
-			}
+			for(var obstacle in obstacles) obstacle.draw(this.ctx);
 		}).bind(this);
 
 		this.checkForOnObstacle();
@@ -128,6 +122,6 @@ export default class Game {
 		this.ctx.clearRect(0, 0, this.can.width, this.can.height)
 		this.ctx.fillRect(this.winBox.x, this.winBox.y,50,50);
 		this.ctx.drawImage(this.mouse.img, this.mouse.x, this.mouse.y, this.mouse.w, this.mouse.h);
-		if(this.obstacles) drawObstacles();
+		drawObstacles();
 	}
 }

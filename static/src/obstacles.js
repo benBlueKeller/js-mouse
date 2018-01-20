@@ -1,14 +1,18 @@
-export default class Obstacle {
+class Obstacle {
   constructor(obs) {
     this.x = obs.x;
     this.y = obs.y;
     this.w = obs.w;
     this.h = obs.h;
   }
+
+  draw(ctx) {
+    this.fillRect(this.x, this.y, this.w, this.h);
+  }
 }
 
 
-export class FSM extends Obstacle {
+class FSM extends Obstacle {
   constructor(obs) {
     // The FSM is an obstacle that moves in a series of spirals
     super(obs);
@@ -33,3 +37,5 @@ export class FSM extends Obstacle {
     ctx.fillRect(this.x, this.y, this.w, this.h);
   }
 }
+
+export { Obstacle, FSM }
