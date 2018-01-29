@@ -47,22 +47,18 @@ export default class Game {
       //up arrow
       if(key === 38) {
         this.mouse.y -= 10;
-        //this.draw();
       }
       //right arriw
       if(key === 39) {
         this.mouse.x += 10;
-        //this.draw();
       }
       //down arrow
       if(key === 40) {
         this.mouse.y += 10;
-        //this.draw();
       }
       //left arrow
       if(key === 37) {
         this.mouse.x -= 10;
-        //this.draw();
       }
     }
     this.eventListener = controls.bind(this);
