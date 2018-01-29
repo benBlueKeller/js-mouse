@@ -75,7 +75,7 @@ export default class Game {
 	}
 
 	runCycle() {
-		var fps = 2;
+		var fps = 25;
 		for(var obstacle of this.obstacles) {
 			if(obstacle.onTick) obstacle.onTick();
 		}
