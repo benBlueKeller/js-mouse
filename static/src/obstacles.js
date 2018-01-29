@@ -7,7 +7,7 @@ class Obstacle {
   }
 
   draw(ctx) {
-    this.fillRect(this.x, this.y, this.w, this.h);
+    ctx.fillRect(this.x, this.y, this.w, this.h);
   }
 }
 

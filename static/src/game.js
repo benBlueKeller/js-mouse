@@ -30,6 +30,8 @@ export default class Game {
 
     this.winFunc = winFunc;
 
+		this.draw = this.draw.bind(this);
+
 		((callback, mouse) => {
       var mouseI = new Image();
       mouseI.onload = function() {
