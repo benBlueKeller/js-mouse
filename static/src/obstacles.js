@@ -23,7 +23,7 @@ class FSM extends Obstacle {
     this.onTick = this.onTick.bind(this);
   }
 
-  onTick() { 
+  onTick() {
     //every tick the a new square is laid along the current spiral
       //if no parameter is defined, a random one is drawn and the squareWidth is zero
       // FSMs position is moved to the fartherest corner of square

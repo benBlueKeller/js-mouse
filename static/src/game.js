@@ -1,4 +1,4 @@
-import { Obstacle, FSM } from "./obstacles.js";
+import { Obstacle, FSM } from './obstacles.js';
 
 /**Game class for jsMouse
  *
@@ -7,7 +7,7 @@ import { Obstacle, FSM } from "./obstacles.js";
  * @return {[type]}        [description]
  */
 export default class Game {
-	constructor(canvas, level, winFunc = () => {alert("Mouse in The Hole!")}, controlsScope = window) {
+	constructor(canvas, level, winFunc = () => {alert('Mouse in The Hole!')}, controlsScope = window) {
 		this.can = canvas;
 		this.ctx = canvas.getContext('2d');
 
@@ -39,7 +39,7 @@ export default class Game {
         callback();
       }
       mouseI.src = 'http://www.clker.com/cliparts/A/E/s/N/M/Y/lab-mouse-template-th.png'
-    })(() => {this.draw()}, this.mouse);
+    })(() => {this.runCycle()}, this.mouse);
 
     function controls(e) {
       //console.log(code);
@@ -47,22 +47,22 @@ export default class Game {
       //up arrow
       if(key === 38) {
         this.mouse.y -= 10;
-        this.draw();
+        //this.draw();
       }
       //right arriw
       if(key === 39) {
         this.mouse.x += 10;
-        this.draw();
+        //this.draw();
       }
       //down arrow
       if(key === 40) {
         this.mouse.y += 10;
-        this.draw();
+        //this.draw();
       }
       //left arrow
       if(key === 37) {
         this.mouse.x -= 10;
-        this.draw();
+        //this.draw();
       }
     }
     this.eventListener = controls.bind(this);
@@ -70,39 +70,39 @@ export default class Game {
 
 		this.runCycle = this.runCycle.bind(this);
 		this.running = true;
-		this.runCycle()
 	}
-	
+
 	loadObstacles(obs) {
-		debugger;
 		this.obstacles = [];
 		if(obs.rects) for(var ob of obs.rects) this.obstacles.push(new Obstacle(ob));
-		if(obs.FSMs) for(var ob of obs.FSMs) this.obstacles.push(new FSM(ob));
+		if(obs.FSMs) for(ob of obs.FSMs) this.obstacles.push(new FSM(ob));
 	}
 
 	runCycle() {
 		var fps = 2;
 		for(var obstacle of this.obstacles) {
 			if(obstacle.onTick) obstacle.onTick();
-			this.draw();
 		}
+		this.draw();
+		if(this.running) setTimeout(this.runCycle, 1000 / fps)
 	}
 
 	checkForWin() {
 		if(this.mouse.x === this.winBox.x && this.mouse.y === this.winBox.y) {
 			setTimeout(this.winFunc, 1);//give ctx time to place image
-    	window.removeEventListener('keydown', this.eventListener);
+			window.removeEventListener('keydown', this.eventListener);
+			this.running = false;
 		}
 	}
 
 	checkForOnObstacle() {
+		function rectOverlap(r1, r2) {
+			return !( r1.x > (r2.x + r2.w) ||
+			(r1.x + r1.w) <  r2.x ||
+			r1.y > (r2.y + r2.h) ||
+			(r1.y + r1.h) <  r2.y);
+		}
 		if(this.obstacles) {
-			function rectOverlap(r1, r2) {
-				return !( r1.x           > (r2.x + r2.w) ||
-             (r1.x + r1.w) <  r2.x           ||
-              r1.y           > (r2.y + r2.h) ||
-             (r1.y + r1.h) <  r2.y);
-			}
 			for(var rect of this.obstacles) {
 				if(rectOverlap(this.mouse, rect)) {
 					this.mouse.x = this.start.x;
@@ -114,7 +114,7 @@ export default class Game {
 
 	draw() {
 		const drawObstacles = ((obstacles = this.obstacles) => {
-			for(var obstacle in obstacles) obstacle.draw(this.ctx);
+			for(var obstacle of obstacles) obstacle.draw(this.ctx);
 		}).bind(this);
 
 		this.checkForOnObstacle();
