@@ -1,9 +1,9 @@
 class Obstacle {
-  constructor(obs) {
-    this.x = obs.x;
-    this.y = obs.y;
-    this.w = obs.w;
-    this.h = obs.h;
+  constructor(ob) {
+    this.x = ob.x;
+    this.y = ob.y;
+    this.w = ob.w;
+    this.h = ob.h;
   }
 
   draw(ctx) {
@@ -13,9 +13,9 @@ class Obstacle {
 
 
 class FSM extends Obstacle {
-  constructor(obs) {
+  constructor(ob) {
     // The FSM is an obstacle that moves in a series of spirals
-    super(obs);
+    super(ob);
     this.radius = 10;
     this.angle = 0;
     this.originX = this.x - this.radius;
@@ -23,7 +23,7 @@ class FSM extends Obstacle {
     this.onTick = this.onTick.bind(this);
   }
 
-  onTick() {
+  onTick() { 
     //every tick the a new square is laid along the current spiral
       //if no parameter is defined, a random one is drawn and the squareWidth is zero
       // FSMs position is moved to the fartherest corner of square

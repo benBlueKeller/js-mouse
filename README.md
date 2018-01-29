@@ -4,6 +4,7 @@ js-mouse is a javascript maze game that uses Bootstrap to assist in the containe
 
 - [Definitions](#Definitions)
   - [obs](#obs)
+  - [ob](#ob)
 - [Available Scripts](#available-scripts)
   - [npm run watch](#npm-run-watch)
   - [npm test](#npm-test)
@@ -15,7 +16,11 @@ js-mouse is a javascript maze game that uses Bootstrap to assist in the containe
 
 ### `obs`
 
-Either obstacles (object with arrays for object types(keys)) or an obstacle sent directly from level object
+An object dictating obstacles, parameter of level object
+
+### `ob`
+
+A single obstacle that is a parameter for one of the obstalce-types of [obs](#obs)
 
 ## Available Scripts
 

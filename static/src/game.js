@@ -72,13 +72,12 @@ export default class Game {
 		this.running = true;
 		this.runCycle()
 	}
-
+	
 	loadObstacles(obs) {
+		debugger;
 		this.obstacles = [];
-		if(obs.rects) for(var obs in obs.rects) this.obstacles.push(new Obstacle(obs));
-		if(obs.FSMs) {
-			for(var obs in obs.FSMs) this.obstacles.push(new FSM(obs));
-		}
+		if(obs.rects) for(var ob of obs.rects) this.obstacles.push(new Obstacle(ob));
+		if(obs.FSMs) for(var ob of obs.FSMs) this.obstacles.push(new FSM(ob));
 	}
 
 	runCycle() {
