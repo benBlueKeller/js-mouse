@@ -30,7 +30,7 @@ class FSM extends Obstacle {
     // this.squareWidth = Math.round((Math.pow(1.618034, this.nFibonacci) - Math.pow(-0.618034, this.nFibonacci)) / Math.sqrt(5));
     this.x = this.originX + Math.cos(this.angle)*this.radius;
     this.y = this.originY + Math.sin(this.angle)*this.radius;
-    this.angle += 10;
+    this.angle += 0.25;
   }
 
   draw(ctx) {
