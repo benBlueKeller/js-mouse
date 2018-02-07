@@ -12,7 +12,7 @@ class Obstacle {
 }
 
 
-class FSM extends Obstacle {
+class Circle extends Obstacle {
   constructor(ob) {
     // The FSM is an obstacle that moves in a series of spirals
     super(ob);
@@ -35,6 +35,17 @@ class FSM extends Obstacle {
 
   draw(ctx) {
     ctx.fillRect(this.x, this.y, this.w, this.h);
+  }
+}
+
+class FSM extends Circle {
+  constructor(ob) {
+    super(ob);
+    var circleTick = super.onTick
+    this.onTick = (function() {
+      this.radius += 0.5;
+      circleTick()
+    }).bind(this)
   }
 }
 
