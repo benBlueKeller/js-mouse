@@ -41,7 +41,7 @@ class Circle extends Obstacle {
 class FSM extends Circle {
   constructor(ob) {
     super(ob);
-    var circleTick = super.onTick
+    var circleTick = super.onTick.bind(this);
     this.onTick = (function() {
       this.radius += 0.5;
       circleTick()

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Jumbotron } from "react-bootstrap";
 
 import JsMouse from './Js-mouse.js';
 
@@ -42,6 +42,9 @@ class MouseModal extends Component {
             <Button onClick={this.close}>Close</Button>
           </Modal.Footer>
         </Modal>
+        <Jumbotron>
+          <JsMouse/>
+        </Jumbotron>
       </div>
     );
   }
