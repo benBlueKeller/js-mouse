@@ -111,7 +111,7 @@ export default class Game {
 	draw() {
 		const drawObstacles = ((obstacles = this.obstacles) => {
 			for(var obstacle of obstacles) obstacle.draw(this.ctx);
-		}).bind(this);
+		})
 
 		this.checkForOnObstacle();
 		this.checkForWin();
